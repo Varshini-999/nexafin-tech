@@ -154,6 +154,11 @@
     border-radius: 4px;
   }
 
+  /* Skip the brand preloader instantly on repeat visits this session */
+  html[data-nx-preloaded] #nx-preloader {
+    display: none !important;
+  }
+
   /* Refined dark scrollbar */
   ::-webkit-scrollbar {
     width: 10px;

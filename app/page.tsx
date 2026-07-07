@@ -1,4 +1,4 @@
-import { Hero } from "@/components/sections/Hero";
+import { HeroSlider } from "@/components/sections/HeroSlider";
 import { ServicesPreview } from "@/components/sections/ServicesPreview";
 import { WhyChoose } from "@/components/sections/WhyChoose";
 import { SolutionsPreview } from "@/components/sections/SolutionsPreview";
@@ -10,7 +10,7 @@ import { FinalCTA } from "@/components/sections/FinalCTA";
 export default function Home() {
   return (
     <>
-      <Hero />
+      <HeroSlider />
       <ServicesPreview />
       <WhyChoose />
       <SolutionsPreview />

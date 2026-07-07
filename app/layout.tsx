@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { SmoothScrollProvider } from "@/components/shared/SmoothScrollProvider";
+import { Preloader } from "@/components/shared/Preloader";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 
@@ -64,7 +65,18 @@ export default function RootLayout({
       className={`dark ${geistSans.variable} ${geistMono.variable} h-full`}
       suppressHydrationWarning
     >
-      <body className="flex min-h-full flex-col bg-background font-sans text-foreground antialiased">
+      <body
+        className="flex min-h-full flex-col bg-background font-sans text-foreground antialiased"
+        suppressHydrationWarning
+      >
+        {/* Skip the preloader instantly (pre-paint) on repeat visits this session. */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html:
+              "try{if(sessionStorage.getItem('nx-preloaded')){document.documentElement.setAttribute('data-nx-preloaded','')}}catch(e){}",
+          }}
+        />
+        <Preloader />
         <SmoothScrollProvider>
           <Header />
           <main className="flex-1">{children}</main>
